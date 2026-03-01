@@ -36,7 +36,5 @@ jobs:
             6. MCP Protocol - Correct tool definitions, proper server implementation
             7. Data Privacy - No logging of sensitive financial data
 
-            Post inline comments on specific changed lines for each issue found.
             Be constructive. Praise good patterns too.
-            Post a summary comment with your overall assessment when done.
           claude_args: '--model claude-sonnet-4-6 --max-turns 25'
