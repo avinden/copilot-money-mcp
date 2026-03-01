@@ -65,3 +65,14 @@ tsconfig.json
 .prettierrc.json
 vitest.config.ts
 jest.config.js
+eslint.config.js
+
+# CI/CD and tooling
+.husky/
+.github/
+scripts/
+
+# Project docs (not needed in bundle)
+CONTRIBUTING.md
+AGENTS.md
+CLAUDE.md
