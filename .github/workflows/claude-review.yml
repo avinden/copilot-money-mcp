@@ -39,4 +39,4 @@ jobs:
             Post inline comments on specific changed lines for each issue found.
             Be constructive. Praise good patterns too.
             Post a summary comment with your overall assessment when done.
-          claude_args: '--model claude-sonnet-4-6 --max-turns 10'
+          claude_args: '--model claude-sonnet-4-6 --max-turns 25'
