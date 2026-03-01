@@ -16,32 +16,18 @@ jobs:
       id-token: write
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Load secrets from 1Password
-        uses: 1password/load-secrets-action@v3
-        with:
-          export-env: true
-        env:
-          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-          CLAUDE_CODE_OAUTH_TOKEN: op://Dev/CLAUDE_CODE_OAUTH_TOKEN/credential
 
       - name: AI Code Review
         uses: anthropics/claude-code-action@v1
         with:
-          claude_code_oauth_token: ${{ env.CLAUDE_CODE_OAUTH_TOKEN }}
-          mode: agent
-          track_progress: true
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           prompt: |
-            You are a code reviewer for the copilot-money-mcp project.
+            Review this PR for the copilot-money-mcp project (MCP server for personal finance data).
 
-            REPO: ${{ github.repository }}
-            PR: #${{ github.event.pull_request.number }}
-
-            Review this PR with focus on:
-
+            Focus areas:
             1. **Code Quality** - Clean code, error handling, readability
             2. **Security** - Vulnerabilities, input validation, data privacy
             3. **Performance** - Bottlenecks, memory leaks, efficient data access
@@ -50,25 +36,7 @@ jobs:
             6. **MCP Protocol** - Correct tool definitions, proper server implementation
             7. **Data Privacy** - No logging of sensitive financial data
 
-            For each issue found:
-            - Post an inline comment on the specific line
-            - Explain the problem clearly
-            - Propose a code snippet showing the fix
-
-            Format your review comments like this:
-            **[AI Review]**
-            **Issue:** <description>
-            **Proposed Fix:**
-            ```typescript
-            // suggested code
-            ```
-            **Reasoning:** <why this improves the code>
-
-            Use `gh pr diff` to see changes, then use `gh pr comment` for inline feedback.
+            Post inline comments on specific changed lines for each issue found.
             Be constructive. Praise good patterns too.
-
-            After reviewing, post a summary comment with your overall assessment.
-            Use `gh pr comment` to post your summary.
-
-          # SECURITY: Only allow read and comment commands - NO approve/review commands
-          claude_args: '--model claude-sonnet-4-20250514 --allowedTools "Bash(gh pr comment*),Bash(gh pr diff*),Bash(gh pr view*),Read,Grep,Glob"'
+            Post a summary comment with your overall assessment when done.
+          claude_args: '--model claude-sonnet-4-6 --max-turns 5'
