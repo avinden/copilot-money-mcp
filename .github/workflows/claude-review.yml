@@ -16,9 +16,9 @@ jobs:
       id-token: write
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: AI Code Review
         uses: anthropics/claude-code-action@v1
@@ -28,13 +28,13 @@ jobs:
             Review this PR for the copilot-money-mcp project (MCP server for personal finance data).
 
             Focus areas:
-            1. **Code Quality** - Clean code, error handling, readability
-            2. **Security** - Vulnerabilities, input validation, data privacy
-            3. **Performance** - Bottlenecks, memory leaks, efficient data access
-            4. **Testing** - Coverage, edge cases, test quality
-            5. **TypeScript** - Proper typing, no `any` abuse, type safety
-            6. **MCP Protocol** - Correct tool definitions, proper server implementation
-            7. **Data Privacy** - No logging of sensitive financial data
+            1. Code Quality - Clean code, error handling, readability
+            2. Security - Vulnerabilities, input validation, data privacy
+            3. Performance - Bottlenecks, memory leaks, efficient data access
+            4. Testing - Coverage, edge cases, test quality
+            5. TypeScript - Proper typing, no any abuse, type safety
+            6. MCP Protocol - Correct tool definitions, proper server implementation
+            7. Data Privacy - No logging of sensitive financial data
 
             Post inline comments on specific changed lines for each issue found.
             Be constructive. Praise good patterns too.
