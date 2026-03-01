@@ -1,8 +1,8 @@
 name: Delete Merged Branch
 
 on:
-  pull_request:
-    types: [closed]
+  # Disabled — inherited from upstream, not needed on this fork
+  workflow_dispatch:
 
 jobs:
   delete-branch:

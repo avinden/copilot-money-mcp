@@ -1,22 +1,8 @@
 name: Audit PR Reviews
 
 on:
-  # Run manually from Actions tab
+  # Disabled — inherited from upstream, not needed on this fork
   workflow_dispatch:
-    inputs:
-      dry_run:
-        description: 'Dry run (no changes)'
-        required: false
-        default: 'false'
-        type: boolean
-      pr_number:
-        description: 'Specific PR number to audit (optional)'
-        required: false
-        type: string
-
-  # Run weekly on Sundays at midnight
-  schedule:
-    - cron: '0 0 * * 0'
 
 jobs:
   audit:
