@@ -59,7 +59,7 @@
     "fix": "bun run lint:fix && bun run format",
     "clean": "rm -rf dist coverage .bun-build",
     "pack:mcpb": "bun run build:bundle && bun run build && bunx @anthropic-ai/mcpb pack",
-    "prepublishOnly": "bun run clean && bun run build && bun test",
+    "prepublishOnly": "bun run clean && bun run build:bundle && bun run build && bun test",
     "prepare": "husky"
   },
   "dependencies": {
